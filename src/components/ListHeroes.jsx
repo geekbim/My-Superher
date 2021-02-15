@@ -13,9 +13,10 @@ export default function ListHeroes() {
     const getListSuperheroes = async () => {
         try {
             const request = await httpClient('all')
+            console.log(request)
             if (request) {
-                if (request.status) {
-                    setHeroes(request.data)
+                if (request) {
+                    setHeroes(request)
                 } else {
                     const errorMessage = {
                         response: {
@@ -26,7 +27,7 @@ export default function ListHeroes() {
                 }
             }
         } catch (error) {
-            console.log(error)
+            console.log('error', error)
         }
     }
 
@@ -37,8 +38,36 @@ export default function ListHeroes() {
         getListSuperheroes()
     }, [])
 
+    /**
+     * render list superheroes
+     */
+    const renderListSuperheroes = () => {
+        return heroes.map((hero, index) => {
+            return (
+                <>
+                    <div className="container" key={ index }>
+                        <div className="row align-items-center">
+                            <div className="col-md-6">
+                                <div className="p-5">
+                                    <img className="img-fluid" src={ hero.images.sm } alt="" />
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="p-5">
+                                    <h2 className="display-4">{ hero.name }</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            )
+        })
+    }
+
     return (
         <div>
+            { renderListSuperheroes() }
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6 order-lg-2">
