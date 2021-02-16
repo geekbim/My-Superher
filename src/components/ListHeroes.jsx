@@ -44,60 +44,22 @@ export default function ListHeroes() {
     const renderListSuperheroes = () => {
         return heroes.map((hero, index) => {
             return (
-                <>
-                    <div className="container" key={ index }>
-                        <div className="row align-items-center">
-                            <div className="col-md-6">
-                                <div className="p-5">
-                                    <img className="img-fluid" src={ hero.images.sm } alt="" />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="p-5">
-                                    <h2 className="display-4">{ hero.name }</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                                </div>
-                            </div>
+                <div className="col-sm-6 col-md-4 col-lg-3 my-4">
+                    <div className="card">
+                        <img className="card-img-top" src={ hero.images.sm } />
+                        <div className="card-block">
+                            <h5 className="text-bold p-2">{ hero.name }</h5>
                         </div>
                     </div>
-                </>
+                </div>
             )
         })
     }
 
     return (
-        <div>
-            { renderListSuperheroes() }
-            <div className="container">
-                <div className="row align-items-center">
-                    <div className="col-lg-6 order-lg-2">
-                        <div className="p-5">
-                            <img className="img-fluid rounded-circle" src={imageOne} alt="" />
-                        </div>
-                    </div>
-                    <div className="col-lg-6 order-lg-1">
-                        <div className="p-5">
-                            <h2 className="display-4">For those about to rock...</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="container">
-                <div className="row align-items-center">
-                    <div className="col-lg-6">
-                        <div className="p-5">
-                            <img className="img-fluid rounded-circle" src={imageTwo} alt="" />
-                        </div>
-                    </div>
-                    <div className="col-lg-6">
-                        <div className="p-5">
-                            <h2 className="display-4">We salute you!</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                        </div>
-                    </div>
-                </div>
+        <div className="container">
+            <div className="row">
+                { renderListSuperheroes() }
             </div>
         </div>
     )
